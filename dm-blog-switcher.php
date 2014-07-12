@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: DM Blog Switcher
 Plugin URI: http://designmissoula.com/
@@ -12,16 +11,16 @@ Text Domain: blog-switcher
 */
 
 function blog_switch_function( $atts ){
-	switch_to_blog(15);
+	$a = shortcode_atts( array(
+        'blog_id' => '1'
+    ), $atts );
+    	
+	switch_to_blog($a['blog_id']);
 
 	return '';
 }
 
 add_shortcode( 'blog-switch', 'blog_switch_function' );
-
-
-
-
 
 function blog_restore_function( $atts ){
 	restore_current_blog();
